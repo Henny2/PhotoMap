@@ -5,12 +5,20 @@
 //  Created by Henrieke Baunack on 1/21/24.
 //
 
+
+/// Look into loading the image as DATA datatype instead of image
+/// then need to add Swiftdata to the model / struct
+///  need to make sure my example does not break. how do I get the image in assets as data input or can I just not intialize iJK I can initialize the array as empty
+
+
+
 import SwiftUI
 import PhotosUI
 
 struct ContentView: View {
     
-    @State private var images: Images = Images(images: [ImageModel(name: "Apollo", image: Image("apollo10"))])
+//    @State private var images: [ImageModel] = [ImageModel(name: "Apollo", image: Image("apollo10"))]
+    @State private var images: [ImageModel] = [ImageModel]()
     @State private var imageItem: PhotosPickerItem?
     @State private var uploadedImage: Image?
     
@@ -23,7 +31,7 @@ struct ContentView: View {
         VStack {
             PhotosPicker("Select image", selection: $imageItem, matching: .images)
                 .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 100)
-            List(images.images) { image in
+            List(images) { image in
                 HStack{
                     image.image
                         .resizable()
@@ -54,7 +62,7 @@ struct ContentView: View {
                 print(imageName)
                 if let uploadedImage = uploadedImage {
                     let newImage = ImageModel(name: imageName, image: uploadedImage)
-                    images.images.append(newImage)
+                    images.append(newImage)
                     imageName = ""
                 }
             }
