@@ -9,16 +9,31 @@ import Foundation
 import SwiftUI
 import SwiftData
 
-
+//@Model
 class ImageModel: Identifiable {
     var id: UUID
     var name: String
-//    @Attribute(.externalStorage) var image: Data?
-    var image: Image
+    @Attribute(.externalStorage) var imageData: Data?
+//    var image: Image {
+//        if let imageData = self.imageData {
+//            if let inputImage = UIImage(data: imageData) {
+//                return Image(uiImage: inputImage)
+//            }
+//        }
+//        return Image(systemName: "error")
+//    }
+    var image: Image {
+//        if let imageData = self.imageData {
+//            if let inputImage = UIImage(data: imageData) {
+//                return Image(uiImage: inputImage)
+//            }
+//        }
+        return Image("error")
+    }
     
-    init(name: String, image: Image) {
+    init(name: String, imageData: Data) {
         self.id = UUID()
         self.name = name
-        self.image = image
+        self.imageData = imageData
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct PhotoMapApp: App {
@@ -13,5 +14,6 @@ struct PhotoMapApp: App {
         WindowGroup {
             ContentView()
         }
+//        .modelContainer(for: ImageModel.self)
     }
 }
