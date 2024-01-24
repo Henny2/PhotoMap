@@ -22,7 +22,7 @@ struct ContentView: View {
     
 //    @State private var images: [ImageModel] = [ImageModel(name: "Apollo", image: Image("apollo10"))]
     @State private var imagesArray: [ImageModel] = [ImageModel]()
-//    @Query var images: [ImageModel]
+    @Query var images: [ImageModel]
     @State private var imageItem: PhotosPickerItem?
     @State private var imageData: Data?
     @State private var uploadedImage: Image?
@@ -36,15 +36,15 @@ struct ContentView: View {
         VStack {
             PhotosPicker("Select image", selection: $imageItem, matching: .images)
                 .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 100)
-//            List(images) { image in
-//                HStack{
-//                    image.image
-//                        .resizable()
-//                        .scaledToFit()
-//                        .frame(width: 50, height: 50)
-//                    Text(image.name)
-//                }
-//            }
+            List(images) { image in
+                HStack{
+                    image.image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
+                    Text(image.name)
+                }
+            }
             List(imagesArray) { image in
                 HStack{
                     image.image
@@ -67,7 +67,6 @@ struct ContentView: View {
                     guard let inputImage = UIImage(data: unwrappedImageData) else { return }
                     uploadedImage = Image(uiImage: inputImage)
                     showingNameAlert.toggle()
-//                    print("imagedata \(imageData)")
                 } else {
                     print("Failed")
                 }
@@ -82,7 +81,7 @@ struct ContentView: View {
                     let newImage = ImageModel(name: imageName, imageData: unwrappedImageData)
                     print(newImage)
                     imagesArray.append(newImage)
-//                    modelContext.insert(newImage)
+                    modelContext.insert(newImage)
                     imageName = ""
                 } else {
                     print("could not unwrap image data")

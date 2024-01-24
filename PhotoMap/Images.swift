@@ -9,25 +9,17 @@ import Foundation
 import SwiftUI
 import SwiftData
 
-//@Model
+@Model
 class ImageModel: Identifiable {
     var id: UUID
     var name: String
     @Attribute(.externalStorage) var imageData: Data?
-//    var image: Image {
-//        if let imageData = self.imageData {
-//            if let inputImage = UIImage(data: imageData) {
-//                return Image(uiImage: inputImage)
-//            }
-//        }
-//        return Image(systemName: "error")
-//    }
     var image: Image {
-//        if let imageData = self.imageData {
-//            if let inputImage = UIImage(data: imageData) {
-//                return Image(uiImage: inputImage)
-//            }
-//        }
+        if let imageData = self.imageData {
+            if let inputImage = UIImage(data: imageData) {
+                return Image(uiImage: inputImage)
+            }
+        }
         return Image("error")
     }
     

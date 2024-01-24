@@ -14,6 +14,6 @@ struct PhotoMapApp: App {
         WindowGroup {
             ContentView()
         }
-//        .modelContainer(for: ImageModel.self)
+        .modelContainer(for: ImageModel.self)
     }
 }
