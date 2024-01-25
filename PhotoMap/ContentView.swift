@@ -19,10 +19,8 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) var modelContext
-    
-//    @State private var images: [ImageModel] = [ImageModel(name: "Apollo", image: Image("apollo10"))]
-    @State private var imagesArray: [ImageModel] = [ImageModel]()
-    @Query var images: [ImageModel]
+
+    @Query(sort: \ImageModel.name) var images: [ImageModel]
     @State private var imageItem: PhotosPickerItem?
     @State private var imageData: Data?
     @State private var uploadedImage: Image?
@@ -33,54 +31,47 @@ struct ContentView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        VStack {
-            PhotosPicker("Select image", selection: $imageItem, matching: .images)
-                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 100)
-            List(images) { image in
-                HStack{
-                    image.image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50, height: 50)
-                    Text(image.name)
+        NavigationStack {
+            VStack {
+                PhotosPicker("Select image", selection: $imageItem, matching: .images)
+                    .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 100)
+                List(images) { image in
+                    NavigationLink { 
+                        ImageDetailView(image: image)
+                    }
+                label: {
+                        HStack{
+                            image.image
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 50, height: 50)
+                            Text(image.name)
+                        }
+                    }
                 }
+//                uploadedImage?.resizable()
+//                    .scaledToFit()
+//                    .frame(width: 200, height: 200)
+                
             }
-            List(imagesArray) { image in
-                HStack{
-                    image.image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50, height: 50)
-                    Text(image.name)
-                }
-            }
-            uploadedImage?.resizable()
-                .scaledToFit()
-                .frame(width: 200, height: 200)
-            Text("\(imagesArray.count)")
-            
-        }
-        .onChange(of: imageItem) {
-            Task {
-                if let unwrappedImageData = try? await imageItem?.loadTransferable(type: Data.self) {
-                    imageData = unwrappedImageData
-                    guard let inputImage = UIImage(data: unwrappedImageData) else { return }
-                    uploadedImage = Image(uiImage: inputImage)
-                    showingNameAlert.toggle()
-                } else {
-                    print("Failed")
+            .onChange(of: imageItem) {
+                Task {
+                    if let unwrappedImageData = try? await imageItem?.loadTransferable(type: Data.self) {
+                        imageData = unwrappedImageData
+                        guard let inputImage = UIImage(data: unwrappedImageData) else { return }
+                        uploadedImage = Image(uiImage: inputImage)
+                        showingNameAlert.toggle()
+                    } else {
+                        print("Failed")
+                    }
                 }
             }
         }
         .alert("Please name the image", isPresented: $showingNameAlert){
            TextField("Enter the image name", text: $imageName)
             Button("OK") {
-                print(imageName)
-//                print(imageData)
                 if let unwrappedImageData = imageData {
                     let newImage = ImageModel(name: imageName, imageData: unwrappedImageData)
-                    print(newImage)
-                    imagesArray.append(newImage)
                     modelContext.insert(newImage)
                     imageName = ""
                 } else {

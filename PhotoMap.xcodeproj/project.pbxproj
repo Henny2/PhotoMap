@@ -12,6 +12,8 @@
 		4002BA092B5DC5BD00FE39B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4002BA082B5DC5BD00FE39B9 /* Assets.xcassets */; };
 		4002BA0C2B5DC5BD00FE39B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4002BA0B2B5DC5BD00FE39B9 /* Preview Assets.xcassets */; };
 		4002BA132B5DCC7E00FE39B9 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4002BA122B5DCC7E00FE39B9 /* Images.swift */; };
+		4002BA152B60C3FD00FE39B9 /* ImageDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4002BA142B60C3FD00FE39B9 /* ImageDetailView.swift */; };
+		4002BA172B62181800FE39B9 /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4002BA162B62181800FE39B9 /* LocationFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		4002BA082B5DC5BD00FE39B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4002BA0B2B5DC5BD00FE39B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4002BA122B5DCC7E00FE39B9 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		4002BA142B60C3FD00FE39B9 /* ImageDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailView.swift; sourceTree = "<group>"; };
+		4002BA162B62181800FE39B9 /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +41,7 @@
 		4002B9F82B5DC5BB00FE39B9 = {
 			isa = PBXGroup;
 			children = (
+				4002BA162B62181800FE39B9 /* LocationFetcher.swift */,
 				4002BA032B5DC5BB00FE39B9 /* PhotoMap */,
 				4002BA022B5DC5BB00FE39B9 /* Products */,
 			);
@@ -55,6 +60,7 @@
 			children = (
 				4002BA042B5DC5BB00FE39B9 /* PhotoMapApp.swift */,
 				4002BA062B5DC5BB00FE39B9 /* ContentView.swift */,
+				4002BA142B60C3FD00FE39B9 /* ImageDetailView.swift */,
 				4002BA122B5DCC7E00FE39B9 /* Images.swift */,
 				4002BA082B5DC5BD00FE39B9 /* Assets.xcassets */,
 				4002BA0A2B5DC5BD00FE39B9 /* Preview Content */,
@@ -141,6 +147,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4002BA072B5DC5BB00FE39B9 /* ContentView.swift in Sources */,
+				4002BA152B60C3FD00FE39B9 /* ImageDetailView.swift in Sources */,
+				4002BA172B62181800FE39B9 /* LocationFetcher.swift in Sources */,
 				4002BA132B5DCC7E00FE39B9 /* Images.swift in Sources */,
 				4002BA052B5DC5BB00FE39B9 /* PhotoMapApp.swift in Sources */,
 			);
@@ -276,6 +284,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PhotoMap/Preview Content\"";
+				DEVELOPMENT_TEAM = 79BXDJ3TV4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -304,6 +313,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PhotoMap/Preview Content\"";
+				DEVELOPMENT_TEAM = 79BXDJ3TV4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
