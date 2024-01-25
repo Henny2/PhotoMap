@@ -41,7 +41,6 @@
 		4002B9F82B5DC5BB00FE39B9 = {
 			isa = PBXGroup;
 			children = (
-				4002BA162B62181800FE39B9 /* LocationFetcher.swift */,
 				4002BA032B5DC5BB00FE39B9 /* PhotoMap */,
 				4002BA022B5DC5BB00FE39B9 /* Products */,
 			);
@@ -58,6 +57,7 @@
 		4002BA032B5DC5BB00FE39B9 /* PhotoMap */ = {
 			isa = PBXGroup;
 			children = (
+				4002BA162B62181800FE39B9 /* LocationFetcher.swift */,
 				4002BA042B5DC5BB00FE39B9 /* PhotoMapApp.swift */,
 				4002BA062B5DC5BB00FE39B9 /* ContentView.swift */,
 				4002BA142B60C3FD00FE39B9 /* ImageDetailView.swift */,
@@ -287,6 +287,7 @@
 				DEVELOPMENT_TEAM = 79BXDJ3TV4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Add location where image was taken";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -316,6 +317,7 @@
 				DEVELOPMENT_TEAM = 79BXDJ3TV4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Add location where image was taken";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ImageDetailView: View {
     let image: ImageModel
@@ -13,14 +14,21 @@ struct ImageDetailView: View {
     @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack{
-            Text(image.name).font(.title)
+            Text(image.name)
+                .font(.title)
+                .padding(.top)
             image.image
                 .resizable()
                 .scaledToFit()
                 .frame(width: 300, height: 300)
+            Map().mapStyle(.hybrid)
+                .frame(width: 250, height: 250)
+                .padding()
             Button("Delete image"){
                 deleteImage(image: image)
-            }
+            }.padding()
+           
+            
         }
     }
     
@@ -32,5 +40,5 @@ struct ImageDetailView: View {
 }
 
 #Preview {
-    ImageDetailView(image: ImageModel(name: "Test", imageData: Data()))
+    ImageDetailView(image: ImageModel(name: "Test", imageData: Data(), latitude: 22.3, longitude: 23.4))
 }

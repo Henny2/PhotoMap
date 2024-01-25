@@ -30,6 +30,8 @@ struct ContentView: View {
     
     @Environment(\.dismiss) var dismiss
     
+    let locationFetcher = LocationFetcher()
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -60,6 +62,7 @@ struct ContentView: View {
                         imageData = unwrappedImageData
                         guard let inputImage = UIImage(data: unwrappedImageData) else { return }
                         uploadedImage = Image(uiImage: inputImage)
+                        print(locationFetcher.lastKnownLocation!)
                         showingNameAlert.toggle()
                     } else {
                         print("Failed")
@@ -78,6 +81,9 @@ struct ContentView: View {
                     print("could not unwrap image data")
                 }
             }
+        }
+        .onAppear(){
+            locationFetcher.start()
         }
     }
 }
