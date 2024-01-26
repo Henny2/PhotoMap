@@ -21,9 +21,13 @@ struct ImageDetailView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 300, height: 300)
-            Map().mapStyle(.hybrid)
+            Map() {
+                Marker("", coordinate: CLLocationCoordinate2D(latitude: image.unwrappedLatitue, longitude: image.unwrappedLongitude))
+            }
+                .mapStyle(.hybrid)
                 .frame(width: 250, height: 250)
                 .padding()
+                
             Button("Delete image"){
                 deleteImage(image: image)
             }.padding()

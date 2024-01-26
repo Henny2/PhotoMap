@@ -15,8 +15,14 @@ class ImageModel: Identifiable {
     var id: UUID
     var name: String
     @Attribute(.externalStorage) var imageData: Data?
-    var latitude: Double
-    var longitude: Double
+    var latitude: Double?
+    var unwrappedLatitue: Double {
+        self.latitude ?? 0
+    }
+    var longitude: Double?
+    var unwrappedLongitude: Double {
+        self.longitude ?? 0
+    }
     var image: Image {
         if let imageData = self.imageData {
             if let inputImage = UIImage(data: imageData) {
@@ -27,7 +33,7 @@ class ImageModel: Identifiable {
     }
     
     var location: CLLocationCoordinate2D {
-        CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
+        CLLocationCoordinate2D(latitude: self.latitude ?? 0, longitude: self.longitude ?? 0 )
     }
     
     init(name: String, imageData: Data, latitude: Double, longitude: Double ) {

@@ -25,6 +25,8 @@ struct ContentView: View {
     @State private var imageData: Data?
     @State private var uploadedImage: Image?
     
+    @State private var userLocation: CLLocationCoordinate2D?
+    
     @State private var showingNameAlert = false
     @State private var imageName = ""
     
@@ -62,6 +64,7 @@ struct ContentView: View {
                         imageData = unwrappedImageData
                         guard let inputImage = UIImage(data: unwrappedImageData) else { return }
                         uploadedImage = Image(uiImage: inputImage)
+                        userLocation = locationFetcher.lastKnownLocation ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
                         print(locationFetcher.lastKnownLocation!)
                         showingNameAlert.toggle()
                     } else {
@@ -74,9 +77,14 @@ struct ContentView: View {
            TextField("Enter the image name", text: $imageName)
             Button("OK") {
                 if let unwrappedImageData = imageData {
-                    let newImage = ImageModel(name: imageName, imageData: unwrappedImageData)
-                    modelContext.insert(newImage)
-                    imageName = ""
+                    if let unwrappedUserLocation = userLocation {
+                        let newImage = ImageModel(name: imageName, imageData: unwrappedImageData, latitude: unwrappedUserLocation.latitude, longitude: unwrappedUserLocation.longitude)
+                        modelContext.insert(newImage)
+                        imageName = ""
+                    }
+                    else {
+                        print("could not get user location")
+                    }
                 } else {
                     print("could not unwrap image data")
                 }
